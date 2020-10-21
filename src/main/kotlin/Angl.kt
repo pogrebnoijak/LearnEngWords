@@ -9,20 +9,31 @@ abstract class Angl(seed: Int = 0) {
 
     open fun work (files: List<String>) {
         files.forEach { file ->
-            FileReader("temp/$file").use {
-            it.readLines().forEach { str -> dict.add(Words(str.split(Pattern.compile(" +")).toMutableList())) }
+            FileReader("temp/$file").use { it ->
+                it.readLines().filter{ str -> !str.isEmpty() }.
+                forEach { str -> dict.add(Words(str.split(Pattern.compile(" +")).toMutableList())) }
         } }
         if (this is Irregular) {
             dict = dict.take(takeWords) as MutableList<Words>
         }
     }
 
+    private fun removeWord(wordNum: Int) {
+        dict.removeAt(wordNum)
+        if (dict.isEmpty())
+            working = false
+    }
+
     private fun teach() {
         val answer = task()
         when(readStrings()) {
             answer.first -> println("Yes")
+            answer.first + "!" ->  {
+                println("Yes")
+                removeWord(answer.second)
+            }
             "" -> println("No - ${answer.first}")
-            in "-exit", "-выход" -> {
+            "-exit" -> {
                 working = false
             }
             "-rev" -> {
@@ -30,10 +41,11 @@ abstract class Angl(seed: Int = 0) {
                     reverse()
                 }
             }
-            in "-del", "-дел" -> {
-                dict.removeAt(answer.second)
-                if (dict.isEmpty())
-                    working = false
+            "-del" -> {
+                removeWord(answer.second)
+            }
+            "-дел" -> {
+                removeWord(answer.second)
             }
             else -> println("No - ${answer.first}")
         }
