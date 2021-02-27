@@ -32,7 +32,7 @@ abstract class Angl(seed: Int = 0) {
                 println("Yes")
                 removeWord(answer.second)
             }
-            "" -> println("No - ${answer.first}")
+            "" -> println(answer.first)
             "-exit" -> {
                 working = false
             }
@@ -46,6 +46,12 @@ abstract class Angl(seed: Int = 0) {
             }
             "-дел" -> {
                 removeWord(answer.second)
+            }
+            "-k" -> {
+                println(dict.size)
+            }
+            "-к" -> {
+                println(dict.size)
             }
             else -> println("No - ${answer.first}")
         }

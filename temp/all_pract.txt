@@ -86,3 +86,23 @@ rumor слух
 doubt сомнения
 cuisine кухня
 masculinity мужественность
+--------------------
+badger дразнить
+implore умолять
+drudgery тяжёлая_работа
+interminable бесконечный
+perceive воспринимать
+throng толпа
+intrepid бесстрашный
+accost обращаться
+reticent сдержанный
+--------------------
+brief краткий
+rambling бессвязный
+panhandler попрошайничество
+howling вой
+corporal капрал
+deed поступок
+sermon проповедь
+sin грех
+imminent неизбежный
